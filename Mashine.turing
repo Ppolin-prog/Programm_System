@@ -1,0 +1,51 @@
+{
+    "alphabet": [
+        "1",
+        "X",
+        "Y",
+        "n"
+    ],
+    "states": {
+        "qzero": {
+            "1": "X R qone",
+            "comment": "",
+            "X": "N",
+            "Y": "!",
+            "n": "!",
+            "λ": "n R !"
+        },
+        "qone": {
+            "1": "X R qeven",
+            "comment": "",
+            "X": "R",
+            "Y": "!",
+            "n": "!",
+            "λ": "Y R !"
+        },
+        "qeven": {
+            "1": "1 R quneven",
+            "comment": "",
+            "X": "R",
+            "Y": "!",
+            "n": "!",
+            "λ": "λ L qback"
+        },
+        "qback": {
+            "1": "L",
+            "comment": "",
+            "X": "L",
+            "Y": "!",
+            "n": "!",
+            "λ": "λ R qone"
+        },
+        "quneven": {
+            "1": "X R qeven",
+            "comment": "",
+            "X": "R",
+            "Y": "!",
+            "n": "!",
+            "λ": "n R !"
+        }
+    },
+    "word": ""
+}
