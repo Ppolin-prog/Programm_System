@@ -1,37 +1,40 @@
-# include <iostream>
+п»ї# include <iostream>
 # include <vector>
 # include <random>
 # include "check.h"
 # include "files.h"
 # include "sort.h"
 using namespace std;
-
+// РР·РјРµРЅРёС‚СЊ РєРѕРґРёСЂРѕРІРєСѓ, РїСЂРё РѕС‚РєСЂС‹С‚РёРё РЅРµ РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ СЂСѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹
+// find_last_of С„СѓРЅРєС†РёСЏ РїСЂРѕРІРµСЂРёС‚СЊ
+// transform(filename.begin(), filename.end(), filename.begin(), [](unsigned char c) {return static_cast<unsigned char>(toupper(c)); }) - РѕР±СЉСЏСЃРЅРёС‚СЊ РїРѕРґСЂРѕР±РЅРѕ
+// РћС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РјР°СЃСЃРёРІР° Рё РµРіРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё, Рё СЃРѕС…СЂР°РЅРµРЅРёСЏ РІ С„Р°Р№Р»
 
 void Show_Values(vector<int>& values) {
 	for (int number : values) {
 		cout << number << " ";
 	} cout << endl;
 }
-int Length_Array() {
+int Get_Length_Array() { //РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ
 	int length = 0;
-	cout << "Введите размер массива: ";
+	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°: ";
 	length = Get_Int();
 	length = Not_Negative(length);
 	return length;
 }
-// Функция для заполнения данных самостоятельно
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅС‹С… СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ
 void Self_Input(int length, vector<int>& values) {
 	values.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // очистка с предыдущего ввода всех дополнительных символов
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // РѕС‡РёСЃС‚РєР° СЃ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РІРІРѕРґР° РІСЃРµС… РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРёРјРІРѕР»РѕРІ
 	for (int i = 0; i < length; i++) {
 		int number = 0;
-		cout << "Введите число " << i + 1 << ": ";
+		cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ " << i + 1 << ": ";
 		number = Get_Int();
 		values.push_back(number);
 	}
 }
 
-// Функция для заполнения данных рандомными числами
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅС‹С… СЂР°РЅРґРѕРјРЅС‹РјРё С‡РёСЃР»Р°РјРё
 void Random_Input(int length, vector<int>& values) {
 	srand(time(0));
 	for (int i = 0; i < length; i++) {
@@ -39,19 +42,19 @@ void Random_Input(int length, vector<int>& values) {
 	}
 }
 
-// Функция для заполнения данных рандомными числами в диапазоне
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅС‹С… СЂР°РЅРґРѕРјРЅС‹РјРё С‡РёСЃР»Р°РјРё РІ РґРёР°РїР°Р·РѕРЅРµ 
 void Random_Range_Input(int length, vector<int>& values) {
 	int begin = 0, end = 0;
 	bool suitable = false;
 	while (true) {
-		cout << "Введите начало диапазона: ";
+		cout << "Р’РІРµРґРёС‚Рµ РЅР°С‡Р°Р»Рѕ РґРёР°РїР°Р·РѕРЅР°: ";
 		begin = Get_Int();
-		cout << "Введите конец диапазона: ";
+		cout << "Р’РІРµРґРёС‚Рµ РєРѕРЅРµС† РґРёР°РїР°Р·РѕРЅР°: ";
 		end = Get_Int();
 		if (end > begin) {
 			suitable = true;
 			break;
-		} cout << "Ошибка: конец диапазона должен быть больше начала" << endl;
+		} cout << "РћС€РёР±РєР°: РєРѕРЅРµС† РґРёР°РїР°Р·РѕРЅР° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅР°С‡Р°Р»Р°" << endl;
 	}
 	for (int i = 0; i < length; i++) {
 		values.push_back(rand() % (end - begin + 1) + begin);
@@ -67,51 +70,47 @@ void Implement_Sort() {
 	vector<int> original_array;
 	vector<int> sorted_array;
 	do {
-		cout << "Выберите способ заполения массива:" << endl <<
-			"Самостоятельно - 1" << endl <<
-			"Рандомными числами - 2" << endl <<
-			"Рандомными числами в диапазоне - 3" << endl <<
-			"Из файла - 4" << endl;
-		cout << "Выберите пункт меню: ";
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± Р·Р°РїРѕР»РµРЅРёСЏ РјР°СЃСЃРёРІР°:" << endl <<
+			"РЎР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ - 1" << endl <<
+			"Р Р°РЅРґРѕРјРЅС‹РјРё С‡РёСЃР»Р°РјРё - 2" << endl <<
+			"Р Р°РЅРґРѕРјРЅС‹РјРё С‡РёСЃР»Р°РјРё РІ РґРёР°РїР°Р·РѕРЅРµ - 3" << endl <<
+			"РР· С„Р°Р№Р»Р° - 4" << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ: ";
 		input_choice = Get_Int();
 		switch (input_choice) {
 		case Self:
-			array_length = Length_Array();
+			array_length = Get_Length_Array();
 			Self_Input(array_length, original_array);
 			Show_Values(original_array);
 			Radix_Sort(original_array, sorted_array);
 			Show_Values(sorted_array);
 			original_array.clear();
 			return;
-			break;
 		case Random:
-			array_length = Length_Array();
+			array_length = Get_Length_Array();
 			Random_Input(array_length, original_array);
 			Show_Values(original_array);
 			Radix_Sort(original_array, sorted_array);
 			Show_Values(sorted_array);
 			original_array.clear();
 			return;
-			break;
 		case Random_Range:
-			array_length = Length_Array();
+			array_length = Get_Length_Array();
 			Random_Range_Input(array_length, original_array);
 			Show_Values(original_array);
 			Radix_Sort(original_array, sorted_array);
 			Show_Values(sorted_array);
 			original_array.clear();
 			return;
-			break;
 		case File:
-			// Пупупу функция вывода данных из файла
+			// РџСѓРїСѓРїСѓ С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 			Show_Values(original_array);
 			Radix_Sort(original_array, sorted_array);
 			Show_Values(sorted_array);
 			original_array.clear();
 			return;
-			break;
-		default: // 6(-О-)9
-			cout << "Некоректный ввод. Пункт отсутствует в меню." << endl;
+		default: // 6(-Рћ-)9
+			cout << "РќРµРєРѕСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ. РџСѓРЅРєС‚ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ РјРµРЅСЋ." << endl;
 			break;
 		}
 	} while (true);
