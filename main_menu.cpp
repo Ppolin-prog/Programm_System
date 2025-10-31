@@ -17,14 +17,14 @@ int main() {
 		case Start: 
 			cout << "Начало работы программы" << endl;
 			Implement_Sort();
-			break;
+			return 0;
 		case End: 
 			cout << "Окончание работы программы" << endl;
-			break;
+			return 0;
 		default: // 6(-О-)9
 			cout << "Некоректный ввод. Пункт отсутствует в меню." << endl;
-			break;
+			return 0;
 		}
-	} while (choice != End);
+	} while (true);
 	return 0;
 }
