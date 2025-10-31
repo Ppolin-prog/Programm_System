@@ -1,29 +1,28 @@
-# include <iostream>
+ï»¿# include <iostream>
 # include "check.h"
 # include "choice_menu.h"
 using namespace std;
 
-enum Menu { Start = 1, End = 2 };
+enum Menu { Start = 1, End};
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	cout << "Ïîðàçðÿäíàÿ ñîðòèðîâêà, âåðñèÿ MSJ" << endl;
+	cout << "ÐŸÐ¾Ñ€Ð°Ð·Ñ€ÑÐ´Ð½Ð°Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ°, Ð²ÐµÑ€ÑÐ¸Ñ MSJ" << endl;
 	int choice = 0;
 	do {
-		cout << "Ïóíêòû ìåíþ: " << endl << "Íà÷àòü ðàáîòó - 1" << endl << "Âûéòè - 2" << endl;
-		cout << "Âûáåðèòå ïóíêò ìåíþ: ";
+		cout << "ÐŸÑƒÐ½ÐºÑ‚Ñ‹ Ð¼ÐµÐ½ÑŽ: " << endl << "ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ - 1" << endl << "Ð’Ñ‹Ð¹Ñ‚Ð¸ - 2" << endl;
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¿ÑƒÐ½ÐºÑ‚ Ð¼ÐµÐ½ÑŽ: ";
 		choice = Get_Int();
 		switch (choice) {
 		case Start: 
-			cout << "Íà÷àëî ðàáîòû ïðîãðàììû" << endl;
+			cout << "ÐÐ°Ñ‡Ð°Ð»Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹" << endl;
 			Implement_Sort();
 			break;
-		choice = 2;
 		case End: 
-			cout << "Îêîí÷àíèå ðàáîòû ïðîãðàììû" << endl;
+			cout << "ÐžÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹" << endl;
 			break;
-		default: // 6(-Î-)9
-			cout << "Íåêîðåêòíûé ââîä. Ïóíêò îòñóòñòâóåò â ìåíþ." << endl;
+		default: // 6(-Ðž-)9
+			cout << "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´. ÐŸÑƒÐ½ÐºÑ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð¼ÐµÐ½ÑŽ." << endl;
 			break;
 		}
 	} while (choice != End);
