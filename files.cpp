@@ -6,6 +6,7 @@
 # include <filesystem>
 # include <algorithm>
 # include "check.h"
+
 using namespace std;
 
 // Функции для заполнения данных из вектора в файл
@@ -89,6 +90,7 @@ void Transfer_To_File(vector<int>& sorted_array) {
 		else {
 			try {
 				ofstream first_file(way, ios::out);
+				cout << way << endl;
 				Save_In_File(sorted_array, way);
 				cout << "Данные сохранены в файл" << endl;
 				file_modified = true;
