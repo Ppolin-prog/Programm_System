@@ -49,7 +49,7 @@ void Data_Base::close()
 bool Data_Base::registration_user(const QString &login, const QString &password)
 {
     QSqlQuery query(userdatabase);
-    query.prepare("INSERT INTO users (login, password, raw_data, sorted_data) VALUES (?, ?, '', '')");
+    query.prepare("INSERT INTO users (login, password, original_data, sorted_data) VALUES (?, ?, '', '')");
     query.addBindValue(login);
     query.addBindValue(password);
     return query.exec();
@@ -75,7 +75,7 @@ bool Data_Base::user_exists(const QString &login)
     return query.exec() && query.next();
 }
 
-bool Data_Base::save_data(const QString &login, const QString &rawData, const QString &sortedData)
+bool Data_Base::save_data(const QString &login, const QString &original_data, const QString &sorted_data)
 {
     if (!userdatabase.isOpen()) {
         if (!userdatabase.open()) {
@@ -85,20 +85,20 @@ bool Data_Base::save_data(const QString &login, const QString &rawData, const QS
     }
     QSqlQuery query(userdatabase);
     query.prepare("UPDATE users SET raw_data = ?, sorted_data = ? WHERE login = ?");
-    query.addBindValue(rawData);
-    query.addBindValue(sortedData);
+    query.addBindValue(original_data);
+    query.addBindValue(sorted_data);
     query.addBindValue(login);
     return query.exec();
 }
 
-bool Data_Base::loading_data(const QString &login, QString &rawData, QString &sortedData)
+bool Data_Base::loading_data(const QString &login, QString &original_data, QString &sorted_data)
 {
     QSqlQuery query(userdatabase);
     query.prepare("SELECT raw_data, sorted_data FROM users WHERE login = ?");
     query.addBindValue(login);
     if (query.exec() && query.next()) {
-        rawData = query.value(0).toString();
-        sortedData = query.value(1).toString();
+        original_data = query.value(0).toString();
+        sorted_data = query.value(1).toString();
         return true;
     }
     return false;

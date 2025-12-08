@@ -19,8 +19,8 @@ public:
     bool authorization_user(const QString &login, const QString &password);
     bool user_exists(const QString &login);
 
-    bool save_data(const QString &login, const QString &rawData, const QString &sortedData);
-    bool loading_data(const QString &login, QString &raw_data, QString &sorted_data);
+    bool save_data(const QString &login, const QString &original_data, const QString &sorted_data);
+    bool loading_data(const QString &login, QString &original_data, QString &sorted_data);
 
 signals:
 
