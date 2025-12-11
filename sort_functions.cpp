@@ -6,14 +6,18 @@ using namespace std;
 
 int Number_Length(int number) {
     int count = 0;
-    if (number == 0) { count = 1; }
+    if (number == 0){
+        count = 1;
+    }
     while (number > 0) {
         number /= 10;
         count++;
     } return count;
 }
 int Max_Length(vector<int>& original) {
-    if (original.empty()) { return 0; }
+    if (original.empty()){
+        return 0;
+    }
     int array_length = original.size();
     int maximum_length = Number_Length(original[0]);
 
@@ -27,17 +31,25 @@ int Max_Length(vector<int>& original) {
 }
 
 void Sort_Function(vector<int>& array, int position = 0, int max_len =-1) {
-    if (max_len == -1) { max_len = Max_Length(array); }
+    if (max_len == -1){
+        max_len = Max_Length(array);
+    }
     int array_length = array.size();
-    if ((array_length <= 1) || (position >= max_len)) { return; }
+    if ((array_length <= 1) || (position >= max_len)){
+        return;
+    }
 
     int power = max_len - 1 - position;
-    if (power < 0) { return; }
+    if (power < 0){
+        return;
+    }
     int divisor = (int)pow(10, power);
 
     vector<vector<int>> digits(10);
     for (int number : array) {
-        if (divisor == 0) { divisor = 1; }
+        if (divisor == 0){
+            divisor = 1;
+        }
         int rang = (number / divisor) % 10;
         digits[rang].push_back(number);
     }
@@ -64,8 +76,12 @@ void Radix_Sort(vector<int>& original, vector<int>& sorted) {
     if (array_length == 0)
         return;
     for (size_t j = 0; j < array_length; j++) {
-        if (original[j] < 0) { negative.push_back(abs(original[j])); }
-        else if (original[j] > 0) {positive.push_back(original[j]);}
+        if (original[j] < 0){
+            negative.push_back(abs(original[j]));
+        }
+        else if (original[j] > 0) {
+            positive.push_back(original[j]);
+        }
     }
 
     Sort_Function(positive);
@@ -74,7 +90,9 @@ void Radix_Sort(vector<int>& original, vector<int>& sorted) {
         sorted.push_back(-negative[begin]);
     }
     for (size_t j = 0; j < array_length; j++) {
-        if (original[j] == 0) { sorted.push_back(original[j]); }
+        if (original[j] == 0) {
+            sorted.push_back(original[j]);
+        }
     }
     for (int end = 0; end < positive.size(); end++) {
         sorted.push_back(positive[end]);

@@ -9,10 +9,8 @@ Sort_With_Range::Sort_With_Range(QTableWidget *table, QSpinBox *rowcount, QWidge
     , ui(new Ui::Sort_With_Range)
     , main_table(table)
     , main_rowcount(rowcount)
-
 {
     ui->setupUi(this);
-    setWindowIcon(QIcon());
     setWindowTitle(" ");
 }
 
@@ -46,5 +44,4 @@ void Sort_With_Range::on_input_numbers_clicked()
     }
 
     QWidget::close();
-
 }

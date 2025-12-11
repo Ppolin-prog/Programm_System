@@ -8,7 +8,6 @@ Registration::Registration(QWidget *parent)
     , ui(new Ui::Registration)
 {
     ui->setupUi(this);
-    setWindowIcon(QIcon());
     setWindowTitle(" ");
     ui->input_regname->setMaxLength(35);
     ui->input_regpassword->setMaxLength(100);
@@ -33,26 +32,19 @@ void Registration::on_registration_button_clicked()
     else if (password.isEmpty()){
         QMessageBox::warning(this, "Ошибка", "Пароль должен содержать хотя бы один символ");
     }
-
     else {
         QMessageBox::information(this, "Регистрация", "Регистрация прошла успешно");
         QWidget::close();
     }
-
     if (userbd.user_exists(login)) {
-        userbd.close();
         QMessageBox::warning(this, "Ошибка", "Пользователь с таким логином уже существует");
         return;
     }
 
     bool success = userbd.registration_user(login, password);
 
-    if (success) {
-        QMessageBox::information(this, "Регистрация", "Регистрация прошла успешно");
-    } else {
+    if (!success) {
         QMessageBox::critical(this, "Ошибка", "Не удалось сохранить данные. Попробуйте снова.");
     }
 
-
 }
-

@@ -11,16 +11,18 @@ class Data_Base : public QObject
 public:
     explicit Data_Base(QObject *parent = nullptr);
 
-    bool openpopen();
+    bool open_data_base();
+    bool create_table();
+
     void close();
     void create(const QString &path);
 
     bool registration_user(const QString &login, const QString &password);
     bool authorization_user(const QString &login, const QString &password);
     bool user_exists(const QString &login);
-
     bool save_data(const QString &login, const QString &original_data, const QString &sorted_data);
-    bool loading_data(const QString &login, QString &original_data, QString &sorted_data);
+    QVector<QPair<QString, QString>> loading_data(const QString &login);
+    bool clear_data_base(const QString &login, QString &original_data, QString &sorted_data);
 
 signals:
 

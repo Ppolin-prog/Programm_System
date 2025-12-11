@@ -19,8 +19,12 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/inp.png</normaloff>:/icons/icons/inp.png</iconset>
+  </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 103);</string>
+   <string notr="true">background-color: rgb(59, 48, 120);</string>
   </property>
   <widget class="QGroupBox" name="login_box">
    <property name="geometry">
@@ -33,7 +37,7 @@
    </property>
    <property name="font">
     <font>
-     <family>MS Sans Serif</family>
+     <family>Microsoft Sans Serif</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -60,9 +64,12 @@
     </property>
     <property name="font">
      <font>
-      <family>MS Sans Serif</family>
+      <family>Microsoft Sans Serif</family>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(163, 82, 234);
@@ -83,18 +90,24 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
-      <family>MS Sans Serif</family>
+      <family>Microsoft Sans Serif</family>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="0">
       <widget class="QLabel" name="passwork_login">
        <property name="font">
         <font>
-         <family>MS Sans Serif</family>
+         <family>Microsoft Sans Serif</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 255, 255);</string>
@@ -111,9 +124,12 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="name_login">
        <property name="font">
         <font>
-         <family>MS Sans Serif</family>
+         <family>Microsoft Sans Serif</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 255, 255);</string>
@@ -130,10 +146,13 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLineEdit" name="input_logname">
        <property name="font">
         <font>
-         <family>MS Sans Serif</family>
+         <family>Microsoft Sans Serif</family>
          <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
@@ -146,10 +165,13 @@ color: rgb(0, 0, 0);
       <widget class="QLineEdit" name="input_logpassword">
        <property name="font">
         <font>
-         <family>MS Sans Serif</family>
+         <family>Microsoft Sans Serif</family>
          <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
@@ -162,6 +184,8 @@ color: rgb(0, 0, 0);
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

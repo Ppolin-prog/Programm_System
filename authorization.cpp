@@ -8,9 +8,7 @@ Authorization::Authorization(QWidget *parent)
     , ui(new Ui::Authorization)
 {
     ui->setupUi(this);
-    setWindowIcon(QIcon());
     setWindowTitle(" ");
-
 }
 
 Authorization::~Authorization()
@@ -30,6 +28,5 @@ void Authorization::on_login_clicked()
     } else {
         QMessageBox::warning(this, "Ошибка", "Неверный логин или пароль.");
     }
-
 }
 
