@@ -23,7 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     userdatabase.create(dbPath);
     if (!userdatabase.open_data_base()) {
         QMessageBox::critical(this, "Ошибка", "Не удалось открыть базу данных.");
-    } else if (!userdatabase.create_table()) {
+    }
+    else if (!userdatabase.create_table()) {
         QMessageBox::critical(this, "Ошибка", "Не удалось создать таблицу.");
     }
 
@@ -52,7 +53,8 @@ void MainWindow::show_login()
 {
     if (current_user.isEmpty()) {
         ui->show_name->setText("");
-    } else {
+    }
+    else {
         ui->show_name->setText(current_user);
     }
 }

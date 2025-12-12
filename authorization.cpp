@@ -25,7 +25,8 @@ void Authorization::on_login_clicked()
         emit login_success(login);
         QMessageBox::information(this, "Авторизация", "Авторизация прошла успешно");
         accept();
-    } else {
+    }
+    else {
         QMessageBox::warning(this, "Ошибка", "Неверный логин или пароль.");
     }
 }

@@ -121,14 +121,3 @@ QVector<QPair<QString, QString>> Data_Base::loading_data(const QString &login)
     }
     return result;
 }
-
-// bool Data_Base::clear_data_base(const QString &login, QString &original_data, QString &sorted_data)
-// {
-//     QSqlQuery query(userdatabase);
-//     query.prepare("DELETE FROM users");
-//     if (!query.exec()) {
-//         qWarning() << "Ошибка очистки БД:" << query.lastError().text();
-//         return false;
-//     }
-//     return true;
-// }
