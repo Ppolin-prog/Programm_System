@@ -32,13 +32,13 @@ void Registration::on_registration_button_clicked()
     else if (password.isEmpty()){
         QMessageBox::warning(this, "Ошибка", "Пароль должен содержать хотя бы один символ");
     }
+    else if (userbd.user_exists(login)){
+        QMessageBox::warning(this, "Ошибка", "Пользователь с таким логином уже существует");
+        return;
+    }
     else {
         QMessageBox::information(this, "Регистрация", "Регистрация прошла успешно");
         QWidget::close();
-    }
-    if (userbd.user_exists(login)) {
-        QMessageBox::warning(this, "Ошибка", "Пользователь с таким логином уже существует");
-        return;
     }
 
     bool success = userbd.registration_user(login, password);
