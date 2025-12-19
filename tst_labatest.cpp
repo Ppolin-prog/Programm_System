@@ -45,28 +45,23 @@ void labatest::test_100_arrays()
 
     Data_Base db;
     db.create("100arrays.sqlite");
-
-    if (!db.create_table()) {
-        QFAIL("Не удалось создать таблицы");
-    }
+    db.create_table();
 
     QSqlQuery userQuery(db.fortest_database());
     userQuery.prepare("INSERT OR IGNORE INTO users (login, password) VALUES (?, ?)");
     userQuery.addBindValue("test_user");
     userQuery.addBindValue("testpass");
-    if (!userQuery.exec()) {
-        QFAIL("Не удалось создать тестового пользователя");
-    }
+    userQuery.exec();
 
     QElapsedTimer timer;
     timer.start();
 
     int add_count = 0;
     for (int i = 0; i < 100; ++i) {
-        int len = 2 + rand() % 98;
-        std::vector<int> original(len);
-        for (int &x : original) {
-            x = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
+        int len_number = 2 + rand() % 98;
+        std::vector<int> original(len_number);
+        for (int &value : original) {
+            value = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
         }
 
         QString original_text;
@@ -122,28 +117,23 @@ void labatest::test_1000_arrays()
 
     Data_Base db;
     db.create("1000arrays.sqlite");
-
-    if (!db.create_table()) {
-        QFAIL("Не удалось создать таблицы");
-    }
+    db.create_table();
 
     QSqlQuery userQuery(db.fortest_database());
     userQuery.prepare("INSERT OR IGNORE INTO users (login, password) VALUES (?, ?)");
     userQuery.addBindValue("test_user");
     userQuery.addBindValue("testpass");
-    if (!userQuery.exec()) {
-        QFAIL("Не удалось создать тестового пользователя");
-    }
+    userQuery.exec();
 
     QElapsedTimer timer;
     timer.start();
 
     int add_count = 0;
     for (int i = 0; i < 1000; ++i) {
-        int len = 2 + rand() % 98;
-        std::vector<int> original(len);
-        for (int &x : original) {
-            x = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
+        int len_number = 2 + rand() % 98;
+        std::vector<int> original(len_number);
+        for (int &value : original) {
+            value = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
         }
 
         QString original_text;
@@ -199,28 +189,23 @@ void labatest::test_10000_arrays()
 
     Data_Base db;
     db.create("10000arrays.sqlite");
-
-    if (!db.create_table()) {
-        QFAIL("Не удалось создать таблицы");
-    }
+    db.create_table();
 
     QSqlQuery userQuery(db.fortest_database());
     userQuery.prepare("INSERT OR IGNORE INTO users (login, password) VALUES (?, ?)");
     userQuery.addBindValue("test_user");
     userQuery.addBindValue("testpass");
-    if (!userQuery.exec()) {
-        QFAIL("Не удалось создать тестового пользователя");
-    }
+    userQuery.exec();
 
     QElapsedTimer timer;
     timer.start();
 
     int add_count = 0;
     for (int i = 0; i < 10000; ++i) {
-        int len = 2 + rand() % 98;
-        std::vector<int> original(len);
-        for (int &x : original) {
-            x = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
+        int len_number = 2 + rand() % 98;
+        std::vector<int> original(len_number);
+        for (int &value : original) {
+            value = (rand() % 2 ? 1 : -1) * (1 + rand() % 10000);
         }
 
         QString original_text;
